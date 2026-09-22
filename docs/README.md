@@ -2,7 +2,7 @@
 
 Reference material for the product and the website. Use it as the source of truth for messaging, positioning and design.
 
-The brand name is **anveli.** (lowercase, one "l"). Older mentions of "Avelli" or "anvelli" are outdated.
+The brand name is **anveli**: lowercase, one "l", no period. The logo is the **6A Tangent** mark (four circles touching one point, the person). Older mentions of "Avelli", "anvelli" or the "anveli." period wordmark are outdated.
 
 ## Product
 
@@ -18,15 +18,16 @@ Planned September 2026. Nothing is implemented yet.
 
 | Doc | What it covers |
 | --- | --- |
-| [Design Direction](website/01-design-direction.md) | Positioning (health-lifestyle, Whoop/Oura/Optikka), the references and what we take from each, the market scan (Bevel, Function, Ultrahuman and others), the locked tool stack, the core "thread" concept, dials and theme (including paper grain and the two logo moments). |
-| [Brand System](website/02-brand-system.md) | Logo rules and planned changes, logo shader moments, colour tokens, type, shape and grain, icons, motion principles with the library split and motion tokens (eases, durations, staggers, ScrollTrigger and Lenis settings), voice and key lines. It becomes the root `DESIGN.md`. |
-| [Site Structure](website/03-site-structure.md) | Sitemap, component map, scroll budget, all 13 homepage parts with a Build spec each (source component, scroll choreography, desktop/mobile/reduced-motion states), the ribbon stage uniform map, the waitlist, `/privacy-trust`, 404, the photo shot list with prompts, and SEO. |
-| [Build Plan](website/04-build-plan.md) | Dependencies and licences, file structure, how the 3D ribbon works, the GSAP + Lenis scroll architecture, accessibility, build phases, verification and open decisions. |
-| [Reference Audit](website/05-reference-audit.md) | Every inspiration source, library and tool: what it is, licence, verdict (use / reference / skip), exactly what we take and where. Includes measured notes on Optikka and Greenstack. |
+| [Design Direction](website/01-design-direction.md) | Positioning (health-lifestyle, Whoop/Oura/Optikka), the references and what we take from each, the market scan (Bevel, Function, Ultrahuman and others), the 6A mark and why it was chosen, the locked tool stack, the core "rings" concept, dials and theme (ink first, one paper chapter, grain). |
+| [Brand System](website/02-brand-system.md) | How the site uses the 6A mark (lockups, files, the living mark), the ink and paper colour tokens with contrast, type, shape and grain, icons, motion principles with the library split and motion tokens (eases, durations, staggers, ScrollTrigger and Lenis settings), voice and key lines. It becomes the root `DESIGN.md`. |
+| [Site Structure](website/03-site-structure.md) | Sitemap, component map, scroll budget, all 13 homepage parts with a Build spec each (source component, scroll choreography, desktop/mobile/reduced-motion states), the ground changes, the 3D rings stage uniform map, the waitlist, `/privacy-trust`, 404, the photo shot list with prompts, and SEO. |
+| [Build Plan](website/04-build-plan.md) | Dependencies and licences, file structure, how the 3D rings and the living mark are built, the GSAP + Lenis scroll architecture, accessibility, build phases, verification and open decisions. |
+| [Reference Audit](website/05-reference-audit.md) | Every inspiration source, library and tool: what it is, licence, verdict (use / reference / skip), exactly what we take and where. Re-checked after the 6A logo was chosen. Includes measured notes on Optikka and Greenstack. |
 
 ## Brand assets
 
-- [Logo design brief](Logo%20design%20brief/anvelli-brand/README.md). Still named "anvelli"; to be regenerated as "anveli." (see the Build Plan, phase 0).
+- **Current:** [6A Tangent logo package](new-logo-latest-final/anveli-6a-package/README.md): SVG symbols (full and optical), lockups, app icons, favicon, colour tokens (`anveli-logo.css`), the living mark, and the brand guidelines page.
+- **Superseded:** [Logo design brief](Logo%20design%20brief/anvelli-brand/README.md), the old "anvelli." period wordmark. Kept for history only.
 
 ## One-line summary
 

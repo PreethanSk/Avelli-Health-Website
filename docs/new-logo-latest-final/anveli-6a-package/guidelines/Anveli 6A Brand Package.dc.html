@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; background: #0B0C0D; }
+  body { color: #E9EEF0; font-family: "Geist", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #9FD8E8; text-decoration: none; }
+  a:hover { color: #C4E8F2; }
+  ::selection { background: #9FD8E8; color: #0B0C0D; }
+</style>
+</helmet>
+
+<div style="max-width:1120px;margin:0 auto;padding:64px 32px 104px;display:flex;flex-direction:column;gap:72px">
+
+  <header style="display:flex;flex-direction:column;gap:14px;border-bottom:1px solid #1F2A30;padding-bottom:36px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8A9AA3">Identity package · 6A Tangent · v1 · Sept 2026</div>
+    <h1 style="margin:0;font-size:40px;font-weight:500;letter-spacing:-.035em;color:#E9EEF0">anveli — logo system</h1>
+    <p style="margin:0;font-size:16px;line-height:1.6;color:#B4C1C8;max-width:640px;text-wrap:pretty">Four circles, one point. Every layer of a life (years, providers, records) is a different size, and all of them touch the same point: the person. The mark is a symbol plus a Geist wordmark, on ink with an ice-blue core.</p>
+  </header>
+
+  <section style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8A9AA3">01 · Primary lockup</div>
+    <div id="lk-h-dark" style="background:radial-gradient(120% 110% at 50% 100%,#14202A 0%,#0B0C0D 62%);padding:96px 64px;display:grid;place-items:center">
+      <div style="display:flex;align-items:center;gap:.3em;font-size:92px">
+        <svg viewBox="0 0 100 100" style="width:1.15em;height:1.15em;display:block"><g fill="none" stroke="#E9EEF0" stroke-width="3"><circle cx="50" cy="50" r="40"></circle><circle cx="50" cy="61" r="29"></circle><circle cx="50" cy="71.5" r="18.5"></circle></g><circle cx="50" cy="81" r="9" fill="#9FD8E8"></circle></svg>
+        <span style="font-weight:500;letter-spacing:-.035em;color:#E9EEF0;line-height:1">anveli</span>
+      </div>
+    </div>
+    <div id="lk-h-light" style="background:#EEF2F4;padding:96px 64px;display:grid;place-items:center">
+      <div style="display:flex;align-items:center;gap:.3em;font-size:92px">
+        <svg viewBox="0 0 100 100" style="width:1.15em;height:1.15em;display:block"><g fill="none" stroke="#0E1A22" stroke-width="3"><circle cx="50" cy="50" r="40"></circle><circle cx="50" cy="61" r="29"></circle><circle cx="50" cy="71.5" r="18.5"></circle></g><circle cx="50" cy="81" r="9" fill="#3E8FA8"></circle></svg>
+        <span style="font-weight:500;letter-spacing:-.035em;color:#0E1A22;line-height:1">anveli</span>
+      </div>
+    </div>
+    <p style="margin:0;font-size:14px;line-height:1.65;color:#B4C1C8;max-width:640px;text-wrap:pretty">The symbol is 1.15× the wordmark's font size, and the gap is 0.3em. The symbol sits optically centred on the x-height, not on the cap line. Dark ground is primary.</p>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8A9AA3">02 · Stacked lockup</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px">
+      <div id="lk-s-dark" style="background:#0B0C0D;padding:72px 40px;display:grid;place-items:center">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.36em;font-size:64px">
+          <svg viewBox="0 0 100 100" style="width:1.7em;height:1.7em;display:block"><g fill="none" stroke="#E9EEF0" stroke-width="3"><circle cx="50" cy="50" r="40"></circle><circle cx="50" cy="61" r="29"></circle><circle cx="50" cy="71.5" r="18.5"></circle></g><circle cx="50" cy="81" r="9" fill="#9FD8E8"></circle></svg>
+          <span style="font-weight:500;letter-spacing:-.035em;color:#E9EEF0;line-height:1">anveli</span>
+        </div>
+      </div>
+      <div id="lk-s-light" style="background:#EEF2F4;padding:72px 40px;display:grid;place-items:center">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.36em;font-size:64px">
+          <svg viewBox="0 0 100 100" style="width:1.7em;height:1.7em;display:block"><g fill="none" stroke="#0E1A22" stroke-width="3"><circle cx="50" cy="50" r="40"></circle><circle cx="50" cy="61" r="29"></circle><circle cx="50" cy="71.5" r="18.5"></circle></g><circle cx="50" cy="81" r="9" fill="#3E8FA8"></circle></svg>
+          <span style="font-weight:500;letter-spacing:-.035em;color:#0E1A22;line-height:1">anveli</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8A9AA3">03 · Construction</div>
+    <div style="background:#0B0C0D;border:1px solid #1F2A30;border-radius:8px;padding:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;align-items:center">
+      <svg viewBox="-10 -6 150 112" style="width:100%;max-width:440px;display:block;justify-self:center">
+        <g stroke="#2E3E48" stroke-width=".4" stroke-dasharray="1.2 1.2" fill="none"><line x1="50" y1="-4" x2="50" y2="100"></line><line x1="0" y1="90" x2="118" y2="90"></line><line x1="50" y1="50" x2="96" y2="50"></line><line x1="50" y1="61" x2="96" y2="61"></line><line x1="50" y1="71.5" x2="96" y2="71.5"></line><line x1="50" y1="81" x2="96" y2="81"></line></g>
+        <g fill="none" stroke="#E9EEF0" stroke-width="3"><circle cx="50" cy="50" r="40"></circle><circle cx="50" cy="61" r="29"></circle><circle cx="50" cy="71.5" r="18.5"></circle></g>
+        <circle cx="50" cy="81" r="9" fill="#9FD8E8"></circle>
+        <g fill="#9FD8E8"><circle cx="50" cy="50" r=".9"></circle><circle cx="50" cy="61" r=".9"></circle><circle cx="50" cy="71.5" r=".9"></circle></g>
+        <circle cx="50" cy="90" r="2.2" fill="none" stroke="#9FD8E8" stroke-width=".6"></circle>
+        <g font-family="JetBrains Mono, monospace" font-size="3.6" fill="#8A9AA3"><text x="98" y="51.3">R = 40</text><text x="98" y="62.3">0.725 R</text><text x="98" y="72.8">0.4625 R</text><text x="98" y="82.3">0.225 R · fill</text><text x="56" y="97.5">tangent point</text></g>
+      </svg>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <p style="margin:0;font-size:15px;line-height:1.65;color:#B4C1C8;text-wrap:pretty">All four circles are internally tangent at a single point on the vertical axis, so every centre sits at <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#E9EEF0">y = tangent − r</span>. The three rings share one stroke of 0.075R. The core is solid.</p>
+        <p style="margin:0;font-size:15px;line-height:1.65;color:#B4C1C8;text-wrap:pretty">At 32px and below, use the optical version: one ring at 0.19 of the box, plus the core. The middle rings would otherwise close up into a blot.</p>
+        <div style="display:flex;gap:18px;align-items:flex-end">
+          <div style="display:flex;flex-direction:column;gap:8px;align-items:center"><svg viewBox="0 0 100 100" style="width:64px;height:64px;display:block"><g fill="none" stroke="#E9EEF0" stroke-width="3"><circle cx="50" cy="50" r="40"></circle><circle cx="50" cy="61" r="29"></circle><circle cx="50" cy="71.5" r="18.5"></circle></g><circle cx="50" cy="81" r="9" fill="#9FD8E8"></circle></svg><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8A9AA3">Full · ≥ 40px</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px;align-items:center"><svg viewBox="0 0 100 100" style="width:64px;height:64px;display:block"><circle cx="50" cy="52" r="38" fill="none" stroke="#E9EEF0" stroke-width="11"></circle><circle cx="50" cy="76" r="14" fill="#9FD8E8"></circle></svg><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8A9AA3">Optical · ≤ 32px</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8A9AA3">04 · Symbol variants</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+      <div style="background:#0B0C0D;border:1px solid #1F2A30;border-radius:8px;padding:40px;display:flex;flex-direction:column;gap:22px;align-items:center"><svg viewBox="0 0 100 100" style="width:96px;height:96px;display:block"><g fill="none" stroke="#E9EEF0" stroke-width="3"><circle cx="50" cy="50" r="40"></circle><circle cx="50" cy="61" r="29"></circle><circle cx="50" cy="71.5" r="18.5"></circle></g><circle cx="50" cy="81" r="9" fill="#9FD8E8"></circle></svg><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8A9AA3">Primary · ice on ink</span></div>
+      <div style="background:#EEF2F4;border:1px solid #1F2A30;border-radius:8px;padding:40px;display:flex;flex-direction:column;gap:22px;align-items:center"><svg viewBox="0 0 100 100" style="width:96px;height:96px;display:block"><g fill="none" stroke="#0E1A22" stroke-width="3"><circle cx="50" cy="50" r="40"></circle><circle cx="50" cy="61" r="29"></circle><circle cx="50" cy="71.5" r="18.5"></circle></g><circle cx="50" cy="81" r="9" fill="#3E8FA8"></circle></svg><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#4A5A63">Reverse · ink on paper</span></div>
+      <div style="background:#0B0C0D;border:1px solid #1F2A30;border-radius:8px;padding:40px;display:flex;flex-direction:column;gap:22px;align-items:center"><svg viewBox="0 0 100 100" style="width:96px;height:96px;display:block"><g fill="none" stroke="#FFFFFF" stroke-width="3"><circle cx="50" cy="50" r="40"></circle><circle cx="50" cy="61" r="29"></circle><circle cx="50" cy="71.5" r="18.5"></circle></g><circle cx="50" cy="81" r="9" fill="#FFFFFF"></circle></svg><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8A9AA3">Mono white</span></div>
+      <div style="background:#FFFFFF;border:1px solid #1F2A30;border-radius:8px;padding:40px;display:flex;flex-direction:column;gap:22px;align-items:center"><svg viewBox="0 0 100 100" style="width:96px;height:96px;display:block"><g fill="none" stroke="#000000" stroke-width="3"><circle cx="50" cy="50" r="40"></circle><circle cx="50" cy="61" r="29"></circle><circle cx="50" cy="71.5" r="18.5"></circle></g><circle cx="50" cy="81" r="9" fill="#000000"></circle></svg><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#4A5A63">Mono black · embroidery, fax, foil</span></div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8A9AA3">05 · App icon &amp; favicon</div>
+    <div style="display:flex;gap:28px;flex-wrap:wrap;align-items:flex-end">
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+        <div id="ic-dark" style="width:128px;height:128px;border-radius:29px;background:radial-gradient(120% 110% at 50% 100%,#14202A 0%,#0B0C0D 70%);display:grid;place-items:center"><svg viewBox="0 0 100 100" style="width:62%;height:62%;display:block"><g fill="none" stroke="#E9EEF0" stroke-width="4.5"><circle cx="50" cy="50" r="40"></circle><circle cx="50" cy="61" r="29"></circle><circle cx="50" cy="71.5" r="18.5"></circle></g><circle cx="50" cy="81" r="9" fill="#9FD8E8"></circle></svg></div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8A9AA3">iOS / Android · dark</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+        <div id="ic-light" style="width:128px;height:128px;border-radius:29px;background:#EEF2F4;display:grid;place-items:center"><svg viewBox="0 0 100 100" style="width:62%;height:62%;display:block"><g fill="none" stroke="#0E1A22" stroke-width="4.5"><circle cx="50" cy="50" r="40"></circle><circle cx="50" cy="61" r="29"></circle><circle cx="50" cy="71.5" r="18.5"></circle></g><circle cx="50" cy="81" r="9" fill="#3E8FA8"></circle></svg></div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8A9AA3">light</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+        <div style="width:64px;height:64px;border-radius:15px;background:#0B0C0D;border:1px solid #1F2A30;display:grid;place-items:center"><svg viewBox="0 0 100 100" style="width:64%;height:64%;display:block"><g fill="none" stroke="#E9EEF0" stroke-width="6"><circle cx="50" cy="50" r="40"></circle><circle cx="50" cy="61" r="29"></circle><circle cx="50" cy="71.5" r="18.5"></circle></g><circle cx="50" cy="81" r="9" fill="#9FD8E8"></circle></svg></div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8A9AA3">64</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+        <div style="width:32px;height:32px;border-radius:8px;background:#0B0C0D;border:1px solid #1F2A30;display:grid;place-items:center"><svg viewBox="0 0 100 100" style="width:74%;height:74%;display:block"><circle cx="50" cy="52" r="38" fill="none" stroke="#E9EEF0" stroke-width="11"></circle><circle cx="50" cy="76" r="14" fill="#9FD8E8"></circle></svg></div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8A9AA3">32</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+        <div style="width:16px;height:16px;border-radius:4px;background:#0B0C0D;display:grid;place-items:center"><svg viewBox="0 0 100 100" style="width:82%;height:82%;display:block"><circle cx="50" cy="52" r="38" fill="none" stroke="#E9EEF0" stroke-width="14"></circle><circle cx="50" cy="76" r="14" fill="#9FD8E8"></circle></svg></div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8A9AA3">16</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8A9AA3">06 · Living mark</div>
+    <div style="border:1px solid #1F2A30;border-radius:8px;overflow:hidden">
+      <div style="position:relative;height:clamp(320px,42vw,460px);background:radial-gradient(120% 100% at 50% 100%,#14202A 0%,#0B0C0D 62%);display:grid;place-items:center;overflow:hidden">
+        <svg viewBox="0 0 100 100" style="width:clamp(150px,20vw,220px);height:clamp(150px,20vw,220px);display:block;overflow:visible">
+          <g fill="none" stroke="#E9EEF0" stroke-width="2.6">
+            <circle ref="{{ lm0 }}" cx="50" cy="81" r="9" opacity="0"></circle>
+            <circle ref="{{ lm1 }}" cx="50" cy="71.5" r="18.5"></circle>
+            <circle ref="{{ lm2 }}" cx="50" cy="61" r="29"></circle>
+            <circle ref="{{ lm3 }}" cx="50" cy="50" r="40"></circle>
+          </g>
+          <circle ref="{{ lmDot }}" cx="50" cy="81" r="9" fill="#9FD8E8"></circle>
+        </svg>
+        <div style="position:absolute;left:0;right:0;bottom:22px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:0 16px">
+          <button onClick="{{ setBreathe }}" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:9px 14px;border-radius:999px;border:1px solid #2E3E48;cursor:pointer;background:{{ bgBreathe }};color:{{ fgBreathe }}">Idle · breathe</button>
+          <button onClick="{{ setSync }}" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:9px 14px;border-radius:999px;border:1px solid #2E3E48;cursor:pointer;background:{{ bgSync }};color:{{ fgSync }}">Syncing · accrue</button>
+          <button onClick="{{ setAdded }}" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:9px 14px;border-radius:999px;border:1px solid #2E3E48;cursor:pointer;background:{{ bgAdded }};color:{{ fgAdded }}">Record added · pulse</button>
+        </div>
+      </div>
+      <div style="background:#10161A;border-top:1px solid #1F2A30;padding:26px 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px">
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:500;color:#E9EEF0">Idle · breathe</span><span style="font-size:13px;line-height:1.6;color:#B4C1C8">Inner rings swell ±7% out of phase, staying tangent the whole time. 7s period. Use for the app splash and resting states.</span></div>
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:500;color:#E9EEF0">Syncing · accrue</span><span style="font-size:13px;line-height:1.6;color:#B4C1C8">A new ring is born from the core and every layer moves out one step, while the oldest fades past the edge. It loops seamlessly. Use for importing and syncing.</span></div>
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:500;color:#E9EEF0">Record added · pulse</span><span style="font-size:13px;line-height:1.6;color:#B4C1C8">The core swells and the pulse travels outward ring by ring, 80ms apart, over 0.9s. It fires once, then returns to idle.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8A9AA3">07 · Clearspace &amp; minimum size</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px">
+      <div style="background:#10161A;border:1px solid #1F2A30;border-radius:8px;padding:40px;display:flex;flex-direction:column;gap:18px">
+        <div style="border:1px dashed #3A4C57;padding:34px;display:grid;place-items:center">
+          <div style="display:flex;align-items:center;gap:.3em;font-size:40px"><svg viewBox="0 0 100 100" style="width:1.15em;height:1.15em;display:block"><g fill="none" stroke="#E9EEF0" stroke-width="3.5"><circle cx="50" cy="50" r="40"></circle><circle cx="50" cy="61" r="29"></circle><circle cx="50" cy="71.5" r="18.5"></circle></g><circle cx="50" cy="81" r="9" fill="#9FD8E8"></circle></svg><span style="font-weight:500;letter-spacing:-.035em;color:#E9EEF0;line-height:1">anveli</span></div>
+        </div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#B4C1C8">Clearspace = the core's diameter × 2, on all sides</span>
+      </div>
+      <div style="background:#10161A;border:1px solid #1F2A30;border-radius:8px;padding:40px;display:flex;flex-direction:column;gap:18px;justify-content:space-between">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:center;gap:14px"><div style="display:flex;align-items:center;gap:.3em;font-size:16px"><svg viewBox="0 0 100 100" style="width:1.15em;height:1.15em;display:block"><circle cx="50" cy="52" r="38" fill="none" stroke="#E9EEF0" stroke-width="11"></circle><circle cx="50" cy="76" r="14" fill="#9FD8E8"></circle></svg><span style="font-weight:600;letter-spacing:-.03em;color:#E9EEF0;line-height:1">anveli</span></div><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8A9AA3">16px · screen floor, optical symbol, 600</span></div>
+          <div style="display:flex;align-items:center;gap:14px"><div style="display:flex;align-items:center;gap:.3em;font-size:12px"><svg viewBox="0 0 100 100" style="width:1.15em;height:1.15em;display:block"><circle cx="50" cy="52" r="38" fill="none" stroke="#E9EEF0" stroke-width="12"></circle><circle cx="50" cy="76" r="14" fill="#9FD8E8"></circle></svg><span style="font-weight:600;letter-spacing:-.02em;color:#E9EEF0;line-height:1">anveli</span></div><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8A9AA3">12px / 9mm wide · print floor</span></div>
+        </div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.6;color:#B4C1C8">Below the floor, use the symbol alone.</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8A9AA3">08 · Color</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px">
+      <div style="border:1px solid #1F2A30;border-radius:8px;overflow:hidden"><div style="height:92px;background:#0B0C0D"></div><div style="padding:14px;display:flex;flex-direction:column;gap:3px;background:#10161A"><span style="font-size:14px;font-weight:600">Ink</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#B4C1C8">#0B0C0D</span></div></div>
+      <div style="border:1px solid #1F2A30;border-radius:8px;overflow:hidden"><div style="height:92px;background:#14202A"></div><div style="padding:14px;display:flex;flex-direction:column;gap:3px;background:#10161A"><span style="font-size:14px;font-weight:600">Depth · glow only</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#B4C1C8">#14202A</span></div></div>
+      <div style="border:1px solid #1F2A30;border-radius:8px;overflow:hidden"><div style="height:92px;background:#E9EEF0"></div><div style="padding:14px;display:flex;flex-direction:column;gap:3px;background:#10161A"><span style="font-size:14px;font-weight:600">Ice</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#B4C1C8">#E9EEF0</span></div></div>
+      <div style="border:1px solid #1F2A30;border-radius:8px;overflow:hidden"><div style="height:92px;background:#9FD8E8"></div><div style="padding:14px;display:flex;flex-direction:column;gap:3px;background:#10161A"><span style="font-size:14px;font-weight:600">Glacier · core on dark</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#B4C1C8">#9FD8E8</span></div></div>
+      <div style="border:1px solid #1F2A30;border-radius:8px;overflow:hidden"><div style="height:92px;background:#3E8FA8"></div><div style="padding:14px;display:flex;flex-direction:column;gap:3px;background:#10161A"><span style="font-size:14px;font-weight:600">Harbor · core on light</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#B4C1C8">#3E8FA8</span></div></div>
+      <div style="border:1px solid #1F2A30;border-radius:8px;overflow:hidden"><div style="height:92px;background:#EEF2F4"></div><div style="padding:14px;display:flex;flex-direction:column;gap:3px;background:#10161A"><span style="font-size:14px;font-weight:600">Paper</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#B4C1C8">#EEF2F4</span></div></div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8A9AA3">09 · Type</div>
+    <div style="background:#10161A;border:1px solid #1F2A30;border-radius:8px;padding:36px;display:flex;flex-direction:column;gap:22px">
+      <div style="display:flex;flex-direction:column;gap:6px;border-bottom:1px solid #1F2A30;padding-bottom:20px"><span style="font-size:40px;font-weight:500;letter-spacing:-.035em">Geist</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#B4C1C8">Wordmark 500 at −0.035em · interface 400 / 500 / 600 · SIL OFL, free for commercial use</span></div>
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:30px;letter-spacing:-.02em">JetBrains Mono</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#B4C1C8">Values, labels, metadata · uppercase at +0.18em</span></div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8A9AA3">10 · Don't</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+      <div style="background:#10161A;border:1px solid #1F2A30;border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:18px;align-items:center"><svg viewBox="0 0 100 100" style="width:72px;height:72px;display:block"><g fill="none" stroke="#E9EEF0" stroke-width="3"><circle cx="50" cy="50" r="40"></circle><circle cx="50" cy="50" r="29"></circle><circle cx="50" cy="50" r="18.5"></circle></g><circle cx="50" cy="50" r="9" fill="#9FD8E8"></circle></svg><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#B4C1C8">Don't centre the rings. That's a target, not a person.</span></div>
+      <div style="background:#10161A;border:1px solid #1F2A30;border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:18px;align-items:center"><svg viewBox="0 0 100 100" style="width:72px;height:72px;display:block;transform:rotate(180deg)"><g fill="none" stroke="#E9EEF0" stroke-width="3"><circle cx="50" cy="50" r="40"></circle><circle cx="50" cy="61" r="29"></circle><circle cx="50" cy="71.5" r="18.5"></circle></g><circle cx="50" cy="81" r="9" fill="#9FD8E8"></circle></svg><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#B4C1C8">Don't rotate it. The point always rests at the bottom.</span></div>
+      <div style="background:#10161A;border:1px solid #1F2A30;border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:18px;align-items:center"><svg viewBox="0 0 100 100" style="width:72px;height:72px;display:block"><g fill="none" stroke-width="3"><circle cx="50" cy="50" r="40" stroke="#E08457"></circle><circle cx="50" cy="61" r="29" stroke="#9FD8E8"></circle><circle cx="50" cy="71.5" r="18.5" stroke="#B9D8A0"></circle></g><circle cx="50" cy="81" r="9" fill="#E9EEF0"></circle></svg><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#B4C1C8">Don't colour-code the rings. One ring colour, one core colour.</span></div>
+      <div style="background:#10161A;border:1px solid #1F2A30;border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:18px;align-items:center"><svg viewBox="0 0 100 100" style="width:72px;height:72px;display:block"><g fill="none" stroke="#E9EEF0" stroke-width="9"><circle cx="50" cy="50" r="40"></circle><circle cx="50" cy="61" r="29"></circle><circle cx="50" cy="71.5" r="18.5"></circle></g><circle cx="50" cy="81" r="9" fill="#9FD8E8"></circle></svg><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#B4C1C8">Don't thicken the full mark. Switch to the optical version instead.</span></div>
+    </div>
+  </section>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;motionSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0.25,&quot;max&quot;:2,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Living mark&quot;}}">
+class Component extends DCLogic {
+  state = { mode: 'breathe' };
+  R = {};
+  ref(k) { return this.R[k] || (this.R[k] = React.createRef()); }
+  componentDidMount() {
+    this.alive = true; this.t = 0; this.tc = -9; this.ta = -9; this.snap = null; this.out = null;
+    const reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    let last = performance.now();
+    const tick = now => {
+      if (!this.alive) return;
+      const dt = Math.min(0.05, (now - last) / 1000); last = now;
+      if (!reduce) { this.t += dt * (this.props.motionSpeed ?? 1); try { this.frame(); } catch (e) {} }
+      this.raf = requestAnimationFrame(tick);
+    };
+    this.raf = requestAnimationFrame(tick);
+  }
+  componentWillUnmount() { this.alive = false; cancelAnimationFrame(this.raf); }
+  target(mode, t, u) {
+    const LV = [9, 18.5, 29, 40, 51];
+    if (mode === 'sync') {
+      const p = (t * 0.55) % 1, e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      return { r: [0, 1, 2, 3].map(j => LV[j] + (LV[j + 1] - LV[j]) * e), o: [e, 1, 1, 1 - e], d: 9 };
+    }
+    const r = [9, 18.5 + 2.2 * Math.sin(t * 0.9), 29 + 2.6 * Math.sin(t * 0.9 - 0.9), 40];
+    let d = 9 + 1.1 * Math.sin(t * 0.9 + 0.9);
+    const b = k => { k = Math.max(0, Math.min(1, k)); return Math.sin(Math.PI * k) * (1 - k * 0.3); };
+    if (u < 1.4) { d += 5 * b(u / 0.55); r[1] += 5 * b((u - 0.08) / 0.6); r[2] += 4 * b((u - 0.16) / 0.65); r[3] += 2.5 * b((u - 0.24) / 0.7); }
+    return { r, o: [0, 1, 1, 1], d };
+  }
+  frame() {
+    const t = this.t, mode = this.state.mode === 'sync' ? 'sync' : 'breathe';
+    let tg = this.target(mode, t, t - this.ta);
+    const k = Math.min(1, (t - this.tc) / 0.5);
+    if (this.snap && k < 1) {
+      const e = 1 - Math.pow(1 - k, 3), L = (a, b) => a + (b - a) * e;
+      tg = { r: tg.r.map((v, i) => L(this.snap.r[i], v)), o: tg.o.map((v, i) => L(this.snap.o[i], v)), d: L(this.snap.d, tg.d) };
+    }
+    this.out = tg;
+    for (let i = 0; i < 4; i++) {
+      const el = this.R['lm' + i] && this.R['lm' + i].current; if (!el) continue;
+      el.setAttribute('r', tg.r[i].toFixed(2)); el.setAttribute('cy', (90 - tg.r[i]).toFixed(2)); el.setAttribute('opacity', tg.o[i].toFixed(3));
+    }
+    const dot = this.R.lmDot && this.R.lmDot.current;
+    if (dot) { dot.setAttribute('r', tg.d.toFixed(2)); dot.setAttribute('cy', (90 - tg.d).toFixed(2)); }
+    if (this.state.mode === 'added' && t - this.ta > 1.4) this.setState({ mode: 'breathe' });
+  }
+  go(mode) {
+    if (this.out) { this.snap = JSON.parse(JSON.stringify(this.out)); this.tc = this.t; }
+    if (mode === 'added') this.ta = this.t;
+    this.setState({ mode });
+  }
+  renderVals() {
+    const m = this.state.mode, on = '#E9EEF0', off = 'rgba(11,12,13,.6)';
+    const o = {
+      setBreathe: () => this.go('breathe'), setSync: () => this.go('sync'), setAdded: () => this.go('added'),
+      bgBreathe: m === 'breathe' ? on : off, fgBreathe: m === 'breathe' ? '#0B0C0D' : '#E9EEF0',
+      bgSync: m === 'sync' ? on : off, fgSync: m === 'sync' ? '#0B0C0D' : '#E9EEF0',
+      bgAdded: m === 'added' ? on : off, fgAdded: m === 'added' ? '#0B0C0D' : '#E9EEF0'
+    };
+    ['lm0', 'lm1', 'lm2', 'lm3', 'lmDot'].forEach(k => o[k] = this.ref(k));
+    return o;
+  }
+}
+</script>
+</body>
+</html>

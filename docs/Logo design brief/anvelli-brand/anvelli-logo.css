@@ -1,0 +1,52 @@
+/* anvelli. logo — drop-in CSS */
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap");
+
+:root {
+  --anv-ink: #0B0C0D;
+  --anv-paper: #F4F3F1;
+  --anv-accent: #7FD1C1;        /* dot on dark grounds */
+  --anv-accent-light: #1F8C77;  /* dot on light grounds */
+  --anv-muted: #9BA1A6;
+}
+
+.anv-logo {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  color: var(--anv-paper);
+}
+.anv-logo .dot { color: var(--anv-accent); }
+
+/* on light grounds */
+.anv-logo--light { color: var(--anv-ink); }
+.anv-logo--light .dot { color: var(--anv-accent-light); }
+
+/* single color */
+.anv-logo--mono .dot { color: inherit; }
+
+/* weight compensation at small sizes */
+.anv-logo--sm { font-size: 20px; font-weight: 600; }
+.anv-logo--xs { font-size: 14px; font-weight: 700; }
+
+/* app icon */
+.anv-icon {
+  display: grid;
+  place-items: center;
+  width: 128px;
+  height: 128px;
+  border-radius: 23%;
+  background: var(--anv-ink);
+  font-family: "Figtree", system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  font-size: 58%;
+  line-height: 1;
+  color: var(--anv-paper);
+}
+.anv-icon .dot { color: var(--anv-accent); }
+
+/* Markup:
+   <span class="anv-logo" style="font-size:32px">anvelli<span class="dot">.</span></span>
+   <div class="anv-icon">a<span class="dot">.</span></div>
+*/

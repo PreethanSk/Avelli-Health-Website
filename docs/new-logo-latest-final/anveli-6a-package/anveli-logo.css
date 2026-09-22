@@ -1,0 +1,15 @@
+/* anveli — logo tokens + lockup CSS */
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap");
+:root{
+  --anv-ink:#0B0C0D; --anv-depth:#14202A; --anv-ice:#E9EEF0;
+  --anv-glacier:#9FD8E8; /* core on dark */
+  --anv-harbor:#3E8FA8;  /* core on light */
+  --anv-paper:#EEF2F4; --anv-ink-reverse:#0E1A22;
+}
+/* <span class="anv-lockup"><img src="svg/symbol-primary-ice.svg" alt=""><span>anveli</span></span> */
+.anv-lockup{display:inline-flex;align-items:center;gap:.3em;font-family:"Geist",system-ui,sans-serif;font-weight:500;letter-spacing:-.035em;line-height:1;color:var(--anv-ice)}
+.anv-lockup img,.anv-lockup svg{width:1.15em;height:1.15em;display:block}
+.anv-lockup--light{color:var(--anv-ink-reverse)}
+.anv-lockup--sm{font-weight:600;letter-spacing:-.03em} /* ≤16px: use symbol-optical */
+.anv-lockup--stacked{flex-direction:column;gap:.36em}
+.anv-lockup--stacked img,.anv-lockup--stacked svg{width:1.7em;height:1.7em}
