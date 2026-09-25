@@ -1,3 +1,5 @@
+> **Superseded (September 2026).** This "anvelli." period wordmark in Figtree with a teal dot is no longer the brand. The brand is **anveli** (lowercase, one "l", no period) with the 6A Tangent symbol: see the current package at [`../../new-logo-latest-final/anveli-6a-package/`](../../new-logo-latest-final/anveli-6a-package/README.md) and the site's [`DESIGN.md`](../../../DESIGN.md). This folder is kept for history only; don't use these files.
+
 # anvelli. — logo package v1 (Sept 2026)
 
 ## The mark

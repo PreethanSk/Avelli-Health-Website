@@ -1,6 +1,6 @@
 # Site Structure and Section Specs
 
-Status: planned. Updated after the reference audit ([05-reference-audit.md](05-reference-audit.md)) and rebuilt around the **6A Tangent** mark. It describes every page and every homepage section: purpose, layout, copy, and a **Build spec** (source components, scroll choreography, and desktop, mobile and reduced-motion states). Copy is draft. Colour and type tokens, the living mark, motion tokens (`ease.*`, `dur.*`, `spring.*`, `stagger.*`) and voice rules are in [02-brand-system.md](02-brand-system.md).
+Status: built (September 2026). Where the build deliberately departs from a Build spec below, the change is listed in [04-build-plan.md §11](04-build-plan.md#11-as-built-september-2026). Updated after the reference audit ([05-reference-audit.md](05-reference-audit.md)) and rebuilt around the **6A Tangent** mark. It describes every page and every homepage section: purpose, layout, copy, and a **Build spec** (source components, scroll choreography, and desktop, mobile and reduced-motion states). Copy is draft. Colour and type tokens, the living mark, motion tokens (`ease.*`, `dur.*`, `spring.*`, `stagger.*`) and voice rules are in [02-brand-system.md](02-brand-system.md).
 
 How to read a Build spec:
 
@@ -20,7 +20,7 @@ Numbers are starting values. If one changes during the build, update it here so 
 | `/terms` | Paper | Terms of use (placeholder, **needs legal review**) |
 | `/404` | Ink | A ring that doesn't touch the person, and "This page isn't part of the story." with a link home |
 
-Nav links: **How it works** (anchor to the seven verbs) · **Privacy** (`/privacy-trust`) · **About** (anchor to "What we're not" plus the footer note) · **Join the waitlist** (pill).
+Nav links: **How it works** (anchor to the seven verbs) · **Privacy** (`/privacy-trust`) · **Join the waitlist** (pill). (An "About" link to "What we're not" was dropped in the build: with no About content yet, it promised something the page didn't have. Add it back with a real About page.)
 
 Later phases, only when there is content: an Insurance deep-dive page, a For families page, and an About/team page.
 

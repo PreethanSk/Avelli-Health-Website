@@ -1,0 +1,90 @@
+/*
+ * Part 13 layout. The reveal is Fancy Components "Sticky Footer"
+ * (https://www.fancycomponents.dev/docs/components/blocks/sticky-footer, MIT,
+ * Daniel Petho) in its clip-path form: our sections are transparent (the
+ * ground layer paints behind them), so instead of hiding the footer under an
+ * opaque <main>, the footer's own shell clips a sticky stage that is held at
+ * the top of the viewport while the shell scrolls in. The page above slides
+ * away and the footer is uncovered from underneath, bottom first.
+ * Only where a 100vh footer fits (>= 768px wide, >= 600px tall) and motion is
+ * allowed; elsewhere it is a normal block with its content's height.
+ */
+
+.shell {
+  position: relative;
+}
+
+/* Soft seam: while the footer is uncovered, its glow meets the ink section
+   above. A short ink fade on the clip edge (it moves with the edge) keeps
+   that meeting soft. It sits above the stage but clear of its content. */
+.shell::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 96px;
+  background: linear-gradient(var(--color-ink), rgb(11 12 13 / 0));
+  pointer-events: none;
+  z-index: 2;
+}
+
+.stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.finaleBox {
+  container-type: inline-size;
+  display: flex;
+  justify-content: center;
+  padding-top: 72px;
+}
+
+/* Mobile: the wordmark spans the container width. */
+.finale {
+  font-size: calc(100cqw / 2.5);
+}
+
+@media (min-width: 768px) {
+  .finaleBox {
+    padding-top: 56px;
+  }
+  /* About 60% of the container width */
+  .finale {
+    font-size: 24cqw;
+  }
+}
+
+@media (min-width: 768px) and (min-height: 600px) {
+  .stage {
+    height: 100svh;
+  }
+  .finaleBox {
+    container-type: size;
+    flex: 1 1 0;
+    min-height: 0;
+    align-items: flex-end;
+    padding-top: 40px;
+  }
+  /* 60% of the width, unless the height left in the 100vh footer is smaller:
+     the stacked lockup is 1.7em + 0.36em + 1em tall. */
+  .finale {
+    font-size: min(24cqw, 32cqh);
+  }
+}
+
+@media (min-width: 768px) and (min-height: 600px) and (prefers-reduced-motion: no-preference) {
+  .shell {
+    height: 100svh;
+    clip-path: inset(0);
+  }
+  .track {
+    position: relative;
+    top: -100svh;
+    height: 200svh;
+  }
+  .stage {
+    position: sticky;
+    top: 0;
+  }
+}

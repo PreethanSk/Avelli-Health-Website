@@ -1,0 +1,432 @@
+/*
+ * Navigation (part 1). Every ground-dependent colour is a custom property on
+ * .header, switched by <html data-ground> alone, so the nav follows the
+ * homepage ground changes (and the paper pages) without React re-renders.
+ * Hex fallbacks mirror src/lib/tokens.ts.
+ */
+
+.header {
+  --nav-fg: var(--color-ice, #e9eef0);
+  --nav-fg-2: var(--color-ice-60, #9aa6ad);
+  --nav-accent: var(--color-glacier, #9fd8e8);
+  --nav-ground: var(--color-ink, #0b0c0d);
+  --nav-hover: var(--color-ink-2, #12181c);
+  --nav-line: var(--color-hairline-ink, #2a3238);
+  --nav-shadow: none;
+  --cta-fg: var(--color-ink, #0b0c0d);
+  --mk-ring: var(--color-ice, #e9eef0);
+  --mk-core: var(--color-glacier, #9fd8e8);
+  --focus-ring: var(--nav-accent);
+  --nav-t: var(--duration-ui, 250ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 50;
+  height: var(--nav-h);
+  color: var(--nav-fg);
+  transition: color var(--nav-t);
+}
+
+:global(html[data-ground="paper"]) .header {
+  --nav-fg: var(--color-ink-reverse, #0e1a22);
+  --nav-fg-2: var(--color-slate, #4a5a64);
+  --nav-accent: var(--color-harbor, #3e8fa8);
+  --nav-ground: var(--color-paper, #eef2f4);
+  --nav-hover: var(--color-paper-2, #e3e9ec);
+  --nav-line: var(--color-hairline-paper, #c9d2d7);
+  --nav-shadow: 0 18px 40px -18px rgb(14 26 34 / 0.22);
+  --cta-fg: var(--color-paper, #eef2f4);
+  --mk-ring: var(--color-ink-reverse, #0e1a22);
+  --mk-core: var(--color-harbor, #3e8fa8);
+}
+
+/* The focus ring follows the ground inside the nav, even on children that
+   carry their own .on-ink / .on-paper class. */
+.header :focus-visible {
+  --focus-ring: var(--nav-accent);
+}
+
+/* ---------------------------------------------------------------------------
+ * Plate: the current ground at 72% plus a progressive blur that is strongest
+ * at the top edge (skiper41 Progressive Blur + React Bits Gradual Blur).
+ * Opacity is set per layer (never on a parent) so the backdrop blur never
+ * loses its backdrop mid-fade.
+ * ------------------------------------------------------------------------- */
+
+.plate {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: calc(var(--nav-h) + 28px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.plateLayer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--nav-t);
+}
+
+.tintInk,
+.tintPaper {
+  --tint: 11 12 13;
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--tint) / 0.72) 0,
+    rgb(var(--tint) / 0.72) calc(var(--nav-h) - 12px),
+    rgb(var(--tint) / 0) 100%
+  );
+}
+.tintPaper {
+  --tint: 238 242 244;
+}
+
+.header[data-scrolled] .blur,
+.header[data-scrolled] .tintInk {
+  opacity: 1;
+}
+:global(html[data-ground="paper"]) .header[data-scrolled] .tintInk {
+  opacity: 0;
+}
+:global(html[data-ground="paper"]) .header[data-scrolled] .tintPaper {
+  opacity: 1;
+}
+
+/* While the mobile sheet is open the sheet is the surface. */
+.header[data-sheet-open] .plateLayer {
+  opacity: 0;
+  transition: none;
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-reduced-motion: reduce) {
+  .blur {
+    display: none;
+  }
+  .plate {
+    height: var(--nav-h);
+  }
+  .tintInk,
+  .tintPaper {
+    background: rgb(var(--tint));
+    border-bottom: 1px solid var(--nav-line);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .plateLayer {
+    transition: none;
+  }
+}
+
+/* The bar (above the sheet, which sits above the plate) */
+.bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+/* ---------------------------------------------------------------------------
+ * Lockup. Docked (every page but the homepage, and under reduced motion): the
+ * nav-size lockup (22px wordmark, 20px on mobile) centred in the bar.
+ * Travel (homepage, motion allowed): the same element starts 96px from the top
+ * at 56px (40px on mobile) and GSAP scrubs it into the docked pose with
+ * scale + translate only. The padding makes a 44px hit area at nav size; the
+ * focus ring is compensated for the scale through --lk-cur.
+ * ------------------------------------------------------------------------- */
+
+.lockup {
+  --lk-fs: 22px;
+  --lk-p: 10px;
+  --lk-cur: 1;
+  position: absolute;
+  z-index: 3; /* stays above the open mobile sheet */
+  left: calc(var(--gutter) - var(--lk-p));
+  top: calc(var(--nav-h) / 2 - var(--lk-fs) * 0.575 - var(--lk-p));
+  padding: var(--lk-p);
+  font-size: var(--lk-fs);
+  transform-origin: 0 0;
+  border-radius: calc(6px / var(--lk-cur));
+  color: var(--nav-fg);
+  transition: color var(--nav-t);
+  -webkit-tap-highlight-color: transparent;
+}
+.lockup:focus-visible {
+  outline-width: calc(2px / var(--lk-cur));
+  outline-offset: calc(3px / var(--lk-cur) - var(--lk-p));
+}
+
+@media (max-width: 767.98px) {
+  .lockup {
+    --lk-fs: 20px;
+    --lk-p: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .lockup[data-travel] {
+    --lk-fs: 56px;
+    --lk-p: 25.4545px; /* 10px / (22 / 56): equals the docked padding once scaled */
+    top: calc(96px - var(--lk-p));
+  }
+}
+@media (prefers-reduced-motion: no-preference) and (max-width: 767.98px) {
+  .lockup[data-travel] {
+    --lk-fs: 40px;
+    --lk-p: 22px; /* 11px / (20 / 40) */
+  }
+}
+
+.lockupInner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+}
+
+.symbol {
+  position: relative;
+  display: block;
+  flex: none;
+  width: 1.15em;
+  height: 1.15em;
+}
+.symbolLayer {
+  position: absolute;
+  inset: 0;
+}
+.symbolLayer svg {
+  width: 100%;
+  height: 100%;
+}
+/* Recolour the mark by ground (CSS beats the SVG presentation attributes). */
+.symbol [stroke] {
+  stroke: var(--mk-ring);
+  transition: stroke var(--nav-t);
+}
+.symbol circle[fill]:not([fill="none"]) {
+  fill: var(--mk-core);
+  transition: fill var(--nav-t);
+}
+
+.full {
+  opacity: 0;
+}
+.optical {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
+  .lockup[data-travel] .full {
+    opacity: 1;
+  }
+  .lockup[data-travel] .optical {
+    opacity: 0;
+  }
+}
+
+.word {
+  display: block;
+  transform: translateY(-0.04em);
+}
+
+/* ---------------------------------------------------------------------------
+ * Links, Pause motion, CTA
+ * ------------------------------------------------------------------------- */
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.link {
+  display: inline-flex;
+  height: 44px;
+  align-items: center;
+  padding-inline: 12px;
+  border-radius: 9999px;
+  font-size: 15px;
+  font-weight: 450;
+  letter-spacing: -0.005em;
+  color: var(--nav-fg);
+  transition: color var(--nav-t);
+}
+.link {
+  position: relative;
+}
+/* The current page: a 1px accent rule under the label */
+.link[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 9px;
+  height: 1px;
+  background: var(--nav-accent);
+}
+
+.iconButton {
+  color: var(--nav-fg-2);
+  background: transparent;
+  transition:
+    color var(--nav-t),
+    background-color var(--duration-micro, 150ms) var(--ease-out);
+}
+.iconButton:hover {
+  color: var(--nav-fg);
+  background: var(--nav-hover);
+}
+
+.cta {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 20px;
+  border-radius: 9999px;
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--cta-fg);
+  transition: color var(--nav-t);
+  user-select: none;
+}
+.ctaFill,
+.ctaHover {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.ctaFill {
+  transition: opacity var(--nav-t);
+}
+.ctaFillInk {
+  background: var(--color-ice, #e9eef0);
+}
+.ctaFillPaper {
+  background: var(--color-ink-reverse, #0e1a22);
+  opacity: 0;
+}
+:global(html[data-ground="paper"]) .ctaFillInk {
+  opacity: 0;
+}
+:global(html[data-ground="paper"]) .ctaFillPaper {
+  opacity: 1;
+}
+.ctaHover {
+  background: currentColor;
+  opacity: 0;
+  transition: opacity var(--duration-micro, 150ms) var(--ease-out);
+}
+.cta:hover .ctaHover,
+.cta[aria-expanded="true"] .ctaHover {
+  opacity: 0.1;
+}
+
+.popover {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 12px);
+  width: min(448px, calc(100vw - 2 * var(--gutter)));
+  padding: 20px 20px 18px;
+  border-radius: 20px;
+  background: var(--nav-ground);
+  border: 1px solid var(--nav-line);
+  box-shadow: var(--nav-shadow);
+  color: var(--nav-fg);
+  transform-origin: top right;
+}
+.popoverLead {
+  margin-bottom: 16px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--nav-fg-2);
+}
+
+/* ---------------------------------------------------------------------------
+ * Mobile: menu button and full-height sheet
+ * ------------------------------------------------------------------------- */
+
+.menuButton {
+  position: relative;
+  z-index: 3; /* above the open sheet, so Close stays visible and tappable */
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  color: var(--nav-fg);
+  transition: color var(--nav-t);
+  -webkit-tap-highlight-color: transparent;
+}
+.menuIcon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--nav-ground);
+  color: var(--nav-fg);
+  padding: calc(var(--nav-h) + 88px) var(--gutter) max(28px, env(safe-area-inset-bottom));
+}
+.sheetLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sheetMask {
+  overflow: hidden;
+  /* keep descenders ("y" in Privacy) inside the mask */
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.sheetLink {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--nav-fg);
+  border-radius: 8px;
+}
+.sheetFoot {
+  margin-top: auto;
+  padding-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.sheetPause {
+  align-self: flex-start;
+  margin-left: -16px;
+}
+
+@media (min-width: 768px) {
+  .menuButton,
+  .sheet {
+    display: none;
+  }
+}

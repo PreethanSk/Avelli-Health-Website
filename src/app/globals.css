@@ -1,26 +1,389 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * anveli design tokens (docs/website/02-brand-system.md).
+ * The default Tailwind palette is removed on purpose: only brand colours exist,
+ * so there is no way to reach for a stray red, teal or pure black.
+ * JS mirrors live in src/lib/tokens.ts.
+ */
+@theme {
+  --color-*: initial;
+
+  /* Ink grounds (primary) */
+  --color-ink: #0b0c0d;
+  --color-depth: #14202a; /* glow only */
+  --color-ink-2: #12181c;
+  --color-ice: #e9eef0;
+  --color-ice-60: #9aa6ad;
+  --color-glacier: #9fd8e8;
+  --color-hairline-ink: #2a3238;
+
+  /* Paper grounds (the one light chapter) */
+  --color-paper: #eef2f4;
+  --color-paper-2: #e3e9ec;
+  --color-ink-reverse: #0e1a22;
+  --color-slate: #4a5a64;
+  --color-harbor: #3e8fa8; /* non-text accent on paper */
+  --color-harbor-deep: #2f7389; /* accent text on paper */
+  --color-hairline-paper: #c9d2d7;
+
+  /* Data state only: a value outside the person's own baseline */
+  --color-amber-ink: #e0a85a;
+  --color-amber-paper: #a8651a;
+
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  /* Type */
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --text-display: clamp(64px, 7.5vw, 120px);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.035em;
+  --text-display--font-weight: 500;
+
+  --text-statement: clamp(48px, 6vw, 96px);
+  --text-statement--line-height: 1.05;
+  --text-statement--letter-spacing: -0.03em;
+  --text-statement--font-weight: 500;
+
+  --text-h2: clamp(40px, 4.4vw, 64px);
+  --text-h2--line-height: 1.05;
+  --text-h2--letter-spacing: -0.03em;
+  --text-h2--font-weight: 500;
+
+  --text-h3: clamp(24px, 2.2vw, 32px);
+  --text-h3--line-height: 1.2;
+  --text-h3--letter-spacing: -0.02em;
+  --text-h3--font-weight: 500;
+
+  --text-lead: 19px;
+  --text-lead--line-height: 1.55;
+
+  --text-body: 17px;
+  --text-body--line-height: 1.6;
+
+  --text-small: 14px;
+  --text-small--line-height: 1.5;
+
+  --text-label: 12px;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.18em;
+
+  /* Shape */
+  --radius-card: 20px;
+  --radius-pill: 9999px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-micro: 150ms;
+  --duration-ui: 250ms;
+  --duration-reveal: 900ms;
+
+  /* Layout */
+  --container-site: 1400px;
+  --container-prose: 65ch;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ---------------------------------------------------------------------------
+ * Base
+ * ------------------------------------------------------------------------- */
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --nav-h: 72px;
+    --gutter: 16px;
+    --grain-opacity: 0.06;
+    --grain-blend: soft-light;
+    color-scheme: dark;
+    scrollbar-color: var(--color-hairline-ink) var(--color-ink);
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --gutter: 32px;
+    }
+  }
+  @media (min-width: 1024px) {
+    :root {
+      --gutter: 48px;
+    }
+  }
+  @media (max-width: 767.98px) {
+    :root {
+      --nav-h: 64px;
+    }
+  }
+
+  html[data-ground="paper"] {
+    --grain-opacity: 0.04;
+    --grain-blend: multiply;
+    color-scheme: light;
+    scrollbar-color: var(--color-hairline-paper) var(--color-paper);
+  }
+
+  html {
+    background: var(--color-ink);
+    /* Nothing decorative may widen the page (on phones overflow grows the layout viewport) */
+    overflow-x: clip;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: var(--color-ink);
+    color: var(--color-ice);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--color-glacier);
+    color: var(--color-ink);
+  }
+  [data-ground-surface="paper"] ::selection,
+  html[data-ground="paper"] ::selection {
+    background: var(--color-harbor);
+    color: var(--color-paper);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Focus: a 2px accent ring with 3px offset, glacier on ink, harbor on paper */
+  :focus-visible {
+    outline: 2px solid var(--focus-ring, var(--color-glacier));
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .on-paper,
+  [data-surface="paper"] {
+    --focus-ring: var(--color-harbor);
+  }
+  .on-ink,
+  [data-surface="ink"] {
+    --focus-ring: var(--color-glacier);
+  }
+
+  img,
+  svg,
+  video,
+  canvas {
+    display: block;
+  }
+
+  button {
+    cursor: pointer;
+  }
+  a,
+  button,
+  input,
+  label,
+  [role="tab"] {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* Anchor targets land below the fixed nav */
+  [id] {
+    scroll-margin-top: var(--nav-h);
+  }
+  button:disabled {
+    cursor: default;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ---------------------------------------------------------------------------
+ * Utilities
+ * ------------------------------------------------------------------------- */
+
+/* Site container: 1400px max with the responsive side gutter */
+@utility container-site {
+  width: 100%;
+  max-width: calc(var(--container-site) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* The 12-column grid with 24px gutters used by every section */
+@utility grid-site {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+}
+
+/* Mono data label: JetBrains Mono, uppercase, +0.18em */
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* Section rhythm: gallery-airy (about 96px mobile, 160 to 240px desktop) */
+@utility section-y {
+  padding-block: 96px;
+  @media (min-width: 1024px) {
+    padding-block: clamp(160px, 14vw, 240px);
+  }
+}
+
+/* Visually hidden but read by screen readers */
+@utility sr-only-soft {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* The one depth glow: a single soft radial gradient, bottom centre */
+@utility depth-glow {
+  background: radial-gradient(120% 100% at 50% 100%, var(--color-depth) 0%, var(--color-ink) 62%);
+}
+
+/* The same depth glow for a floating element: fades to transparent on every
+   side, so it never shows a box edge. Use depth-glow only on full-bleed stages. */
+@utility depth-glow-soft {
+  background: radial-gradient(closest-side, var(--color-depth) 0%, rgb(20 32 42 / 0.55) 45%, rgb(20 32 42 / 0) 100%);
+}
+
+/* Text link with an underline that draws in (Fancy "Underline Animation", rebuilt in CSS) */
+@utility link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--duration-ui) var(--ease-out);
+  text-decoration: none;
+  padding-bottom: 2px;
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+/* A text link that is underlined at rest (for inline links in paragraphs) */
+@utility link-inline {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--duration-micro) var(--ease-out);
+}
+
+/* ---------------------------------------------------------------------------
+ * Grain: the site's only texture. One fixed, static overlay.
+ * ------------------------------------------------------------------------- */
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  background-image: url("/brand/grain.webp");
+  background-size: 256px 256px;
+  background-repeat: repeat;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: var(--grain-blend);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .grain {
+    display: none;
+  }
+}
+@media (forced-colors: active) {
+  .grain {
+    display: none;
+  }
+}
+@media print {
+  .grain {
+    display: none;
+  }
+}
+
+/* The fixed paper ground layer (opacity is scrubbed by GroundLayer) */
+.ground-paper {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--color-paper);
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+/* ---------------------------------------------------------------------------
+ * Motion guards
+ * ------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Lenis: nested scrollers keep their own scroll */
+[data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* SplitText masks: keep descenders */
+.split-line-mask {
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+/*
+ * Line reveals: with JS on and motion allowed, hide [data-reveal] text until
+ * SplitText has masked it (no flash of the unsplit headline). Failsafe: if
+ * scripts never run, the text still appears after 2.5s.
+ */
+@keyframes reveal-failsafe {
+  to {
+    visibility: visible;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html[data-js] [data-reveal]:not([data-revealed]) {
+    visibility: hidden;
+    animation: reveal-failsafe 0s linear 2.5s forwards;
+  }
+}
+
+/* Smooth-caret blink (the waitlist input) */
+@keyframes caret-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  55%,
+  100% {
+    opacity: 0;
+  }
+}
+.caret-blink {
+  animation: caret-blink 1.05s steps(1, end) infinite;
 }

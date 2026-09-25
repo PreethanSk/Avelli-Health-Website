@@ -1,6 +1,6 @@
 # Website Design Direction
 
-Status: agreed in planning, September 2026. Updated after the reference audit ([05-reference-audit.md](05-reference-audit.md)) and again when the **6A Tangent** logo was chosen. Nothing is implemented yet.
+Status: agreed in planning, September 2026. Updated after the reference audit ([05-reference-audit.md](05-reference-audit.md)) and again when the **6A Tangent** logo was chosen. Built September 2026; see [04-build-plan.md §11](04-build-plan.md#11-as-built-september-2026).
 
 This document records *why* the anveli website looks and behaves the way it will. Read it before designing or writing any page. The product itself is described in [`../product/`](../product/); the site must stay consistent with it.
 

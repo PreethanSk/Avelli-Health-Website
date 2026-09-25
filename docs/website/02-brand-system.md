@@ -1,6 +1,6 @@
 # Brand System for the Website
 
-Status: planned, rebuilt around the **6A Tangent** logo (September 2026). It will be turned into the root `DESIGN.md` (awesome-design-md format) when building starts.
+Status: planned, rebuilt around the **6A Tangent** logo (September 2026). It is now the root [`DESIGN.md`](../../DESIGN.md) (awesome-design-md format); tokens live in `src/lib/tokens.ts` and `src/app/globals.css`.
 
 The source of truth for the mark is the logo package in [`../new-logo-latest-final/anveli-6a-package/`](../new-logo-latest-final/anveli-6a-package/README.md): its README, `anveli-logo.css`, the SVGs, and the living mark. This doc sets out how the website uses it. If the two ever disagree, the package wins for the mark itself and this doc wins for everything else on the site.
 

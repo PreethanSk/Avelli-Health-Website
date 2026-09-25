@@ -14,7 +14,7 @@ The brand name is **anveli**: lowercase, one "l", no period. The logo is the **6
 
 ## Website
 
-Planned September 2026. Nothing is implemented yet.
+Built September 2026 (phases 0 to 8). The as-built decisions and every deviation from the specs are recorded in [Build Plan §11](website/04-build-plan.md#11-as-built-september-2026). The root [`DESIGN.md`](../DESIGN.md) is the active design system.
 
 | Doc | What it covers |
 | --- | --- |

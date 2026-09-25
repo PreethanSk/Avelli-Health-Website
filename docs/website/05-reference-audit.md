@@ -1,6 +1,6 @@
 # Reference Audit
 
-Status: complete, September 2026, and **re-checked after the 6A Tangent logo was chosen** (ink-first, glass-like rings, the living mark). It covers every inspiration source, library and tool the owner has shared. Nothing is implemented yet.
+Status: complete, September 2026, and **re-checked after the 6A Tangent logo was chosen** (ink-first, glass-like rings, the living mark). It covers every inspiration source, library and tool the owner has shared. The build used every "Use" item; per-file sources and licences are in each component's header comment and summarised in [04-build-plan.md §11](04-build-plan.md#11-as-built-september-2026).
 
 This is the one place that answers "did we look at X, and what did we take from it?" The decisions here feed [01-design-direction.md](01-design-direction.md) (why), [02-brand-system.md](02-brand-system.md) (tokens and motion rules), [03-site-structure.md](03-site-structure.md) (the per-section build specs) and [04-build-plan.md](04-build-plan.md) (dependencies and architecture).
 
